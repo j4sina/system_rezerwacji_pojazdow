@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "osoba.h"
+// #include "Rezerwacja.h"
 
 using namespace std;
 
