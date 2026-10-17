@@ -2,6 +2,7 @@
 
 #include <string>
 #include "Osoba.h"
+#include "Date.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ public:
                      const string &id_pracownika, const Date &data_zatrudnienia,
                      float pensja);
 
-    bool sprawdzUprawnienia() override;
+    bool sprawdzaUprawnienia() const override;
 
     string getIdPracownika() const;
     Date getDataZatrudnienia() const;
