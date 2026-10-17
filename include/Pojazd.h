@@ -1,5 +1,4 @@
-#ifndef POJAZD_H
-#define POJAZD_H
+#pragma once
 
 #include <string>
 
@@ -25,6 +24,4 @@ private:
     double cena_za_dzien_;
     double kaucja_;
     bool dostepnosc_;
-};
-
-#endif // POJAZD_H
+};

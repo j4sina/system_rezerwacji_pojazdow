@@ -1,5 +1,4 @@
-#ifndef OSOBA_H
-#define OSOBA_H
+#pragma once
 
 #include <iostream>
 using namespace std;
@@ -19,6 +18,4 @@ private:
     int id_;
     string imie_;
     string nazwisko_;
-};
-
-#endif
+};

@@ -1,5 +1,4 @@
-#ifndef PLATNOSC_H
-#define PLATNOSC_H
+#pragma once
 
 #include <iostream>
 
@@ -25,6 +24,4 @@ private:
     SposobPlatnosci sposob_platnosci_;
     string termin_platnosci_;
     double cena_;
-};
-
-#endif
+};

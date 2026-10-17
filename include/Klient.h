@@ -1,5 +1,4 @@
-#ifndef KLIENT_H
-#define KLIENT_H
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -13,6 +12,4 @@ public:
     Klient(int id, string imie, string nazwisko);
 
     bool sprawdzaUprawnienia() const override;
-};
-
-#endif
+};
