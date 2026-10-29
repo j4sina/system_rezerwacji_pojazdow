@@ -1,8 +1,10 @@
 #pragma once
-
+#include <memory>
 #include <string>
 #include "Osoba.h"
 #include "Date.h"
+#include <vector>
+#include "Pojazd.h"
 
 using namespace std;
 
@@ -18,6 +20,9 @@ public:
     string getIdPracownika() const;
     Date getDataZatrudnienia() const;
     float getPensja() const;
+
+    void dodajPojazd(std::vector<std::shared_ptr<Pojazd>> &flota, std::shared_ptr<Pojazd> nowyPojazd);
+    void usunPojazd(std::vector<std::shared_ptr<Pojazd>> &flota, int idPojazdu);
 
 private:
     string id_pracownika_;
