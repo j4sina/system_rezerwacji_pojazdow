@@ -68,3 +68,8 @@
 **Aktorzy:** Pracownik Obsługi
 **Opis:** Pracownik wprowadza do systemu faktyczną datę zwrotu pojazdu. Jeśli data ta przekracza ustalony termin, system automatycznie wylicza opłatę karną za opóźnienie i aktualizuje to pole w rezerwacji w celu rozliczenia klienta.
 **Powiązanie z user stories:** 6
+
+### Use Case 7 (Zaloguj się na konto)
+**Aktorzy:** Klient, Pracownik Obsługi
+**Opis:** Użytkownik podaje swój login i hasło, a system weryfikuje te dane, aby udzielić dostępu do chronionych funkcji (np. sprawdzania prywatnej historii rezerwacji, składania nowego zamówienia czy zarządzania flotą).
+**Powiązanie z user stories:**  -
