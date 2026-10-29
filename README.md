@@ -39,37 +39,43 @@
 **Kryterium akceptacji:** Jeśli faktyczna data zwrotu wprowadzona przez pracownika jest późniejsza niż ustalony termin, system wylicza opłatę karną i aktualizuje pole kara w rezerwacji.
 
 ## Use Cases
-### Use Case 1 (Wyszukaj pojazd)
-**Aktorzy:** Klient, Pracownik Obsługi
-**Opis:** Klient przeszukuje katalog systemu, podając model i markę, aby sprawdzić jego dostępność.
-**Powiązanie z user stories:** 4
 
-### Use Case 2 (Sprawdź historię rezerwacji)
-**Aktorzy:** Klient
-**Opis:** Klient podaje swoje dane, aby sprawdzić swoje poprzednie lub bieżące rezerwacje.
+### Use Case 1 (Wypożycz pojazd / Złóż rezerwację)
+**Aktorzy:** Klient  
+**Opis:** Klient tworzy rezerwację wybranego pojazdu na dany termin. Wymaga zalogowania się na konto oraz obliczenia kwoty wynajmu.  
 **Powiązanie z user stories:** 1
 
-### Use Case 3 (Dodaj pojazd)
-**Aktorzy:** Pracownik Obsługi
-**Opis:** Pracownik wprowadza do systemu nowy pojazd, podając jego markę, model i numer rejestracyjny, co poszerza listę pojazdów.
+### Use Case 2 (Dodaj pojazd)
+**Aktorzy:** Pracownik Obsługi  
+**Opis:** Pracownik wprowadza do systemu nowy pojazd, podając jego markę, model, numer rejestracyjny, cenę dobową i kaucję.  
 **Powiązanie z user stories:** 2
 
-### Use Case 4 (Usuń pojazd)
-**Aktorzy:** Pracownik Obsługi
-**Opis:** Pracownik usuwa pojazd wprowadzając jego numer rejestracyjny, co zmniejsza listę pojazdów
+### Use Case 3 (Usuń pojazd)
+**Aktorzy:** Pracownik Obsługi  
+**Opis:** Pracownik usuwa wycofany lub uszkodzony pojazd na podstawie jego identyfikatora, co usuwa go z oferty.  
 **Powiązanie z user stories:** 3
 
+### Use Case 4 (Wyszukaj pojazd)
+**Aktorzy:** Osoba (Klient, Pracownik Obsługi)  
+**Opis:** Użytkownik przegląda ofertę floty i filtruje pojazdy w celu znalezienia wolnych egzemplarzy.  
+**Powiązanie z user stories:** 4
+
 ### Use Case 5 (Poznaj kwotę rezerwacji)
-**Aktorzy:** Klient
-**Opis:** Klient wybiera pojazd oraz dostępną datę rezerwacji, a system oblicza kwotę do zapłaty.
+**Aktorzy:** Klient  
+**Opis:** Klient wybiera pojazd oraz czas trwania wynajmu, a system wylicza całkowity koszt rezerwacji z uwzględnieniem kaucji.  
 **Powiązanie z user stories:** 5
 
-### Use Case 6 (Nalicz karę za opóźniony zwrot pojazdu)
-**Aktorzy:** Pracownik Obsługi
-**Opis:** Pracownik wprowadza do systemu faktyczną datę zwrotu pojazdu. Jeśli data ta przekracza ustalony termin, system automatycznie wylicza opłatę karną za opóźnienie i aktualizuje to pole w rezerwacji w celu rozliczenia klienta.
+### Use Case 6 (Przyjmij zwrot i nalicz karę)
+**Aktorzy:** Pracownik Obsługi  
+**Opis:** Pracownik rejestruje fizyczny zwrot pojazdu. W przypadku przekroczenia terminu zwrotu, system automatycznie rozszerza proces o naliczenie kary umownej.  
 **Powiązanie z user stories:** 6
 
 ### Use Case 7 (Zaloguj się na konto)
-**Aktorzy:** Klient, Pracownik Obsługi
-**Opis:** Użytkownik podaje swój login i hasło, a system weryfikuje te dane, aby udzielić dostępu do chronionych funkcji (np. sprawdzania prywatnej historii rezerwacji, składania nowego zamówienia czy zarządzania flotą).
-**Powiązanie z user stories:**  -
+**Aktorzy:** Osoba (Klient, Pracownik Obsługi)  
+**Opis:** Użytkownik podaje login i hasło w celu autoryzacji dostępu do chronionych operacji w systemie.  
+**Powiązanie z user stories:** -
+
+### Use Case 8 (Sprawdź historię rezerwacji)
+**Aktorzy:** Klient  
+**Opis:** Klient sprawdza listę swoich bieżących oraz archiwalnych rezerwacji po zalogowaniu na konto.  
+**Powiązanie z user stories:** -
