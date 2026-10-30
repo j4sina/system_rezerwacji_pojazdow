@@ -1,4 +1,4 @@
-#include "Rezerwacja.h"
+#include "../include/Rezerwacja.h"
 #include <iostream>
 
 Rezerwacja::Rezerwacja(int id_rezerwacji, const Date &data_rezerwacji,

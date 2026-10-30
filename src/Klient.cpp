@@ -1,4 +1,4 @@
-#include "Klient.h"
+#include "../include/Klient.h"
 #include <iostream>
 
 Klient::Klient(int id, string imie, string nazwisko)

@@ -1,4 +1,4 @@
-#include "PozycjaRezerwacji.h"
+#include "../include/PozycjaRezerwacji.h"
 
 PozycjaRezerwacji::PozycjaRezerwacji(std::shared_ptr<Pojazd> pojazd)
     : pojazd_(pojazd)

@@ -1,4 +1,4 @@
-#include "Pojazd.h"
+#include "../include/Pojazd.h"
 
 Pojazd::Pojazd(int id_pojazdu,
                const std::string &marka,
