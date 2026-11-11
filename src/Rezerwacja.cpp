@@ -24,9 +24,9 @@ float Rezerwacja::obliczKoszt() const
     float suma = 0.0f;
     for (const auto &poz : pozycje_)
     {
-        float cenaDoba = poz.getPojazd()->getCenaZaDzien();
-        float kaucja = poz.getPojazd()->getKaucja();
-        suma += (cenaDoba * ilosc_dni_) + kaucja;
+        float kosztWynajmu = static_cast<float>(poz.getPojazd()->obliczOplate(ilosc_dni_));
+        float kaucja = static_cast<float>(poz.getPojazd()->getKaucja());
+        suma += kosztWynajmu + kaucja;
     }
     return suma;
 }
@@ -34,14 +34,17 @@ float Rezerwacja::obliczKoszt() const
 float Rezerwacja::naliczKare(const Date &faktyczna_data_zwrotu)
 {
     data_zwrotu_ = faktyczna_data_zwrotu;
+    zwrocono_ = true;
 
     const float STAWKA_KARY_DZIEN = 150.0f;
 
-    int dniSpoznienia = 0;
+    int dniUstalonyTermin = termin_zwrotu_.rok * 365 + termin_zwrotu_.miesiac * 30 + termin_zwrotu_.dzien;
+    int dniFaktycznyZwrot = faktyczna_data_zwrotu.rok * 365 + faktyczna_data_zwrotu.miesiac * 30 + faktyczna_data_zwrotu.dzien;
+    int dniSpoznienia = dniFaktycznyZwrot - dniUstalonyTermin;
 
     if (dniSpoznienia > 0)
     {
-        kara_ = dniSpoznienia * STAWKA_KARY_DZIEN;
+        kara_ = static_cast<float>(dniSpoznienia) * STAWKA_KARY_DZIEN;
     }
     else
     {
