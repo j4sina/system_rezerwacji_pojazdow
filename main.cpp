@@ -94,6 +94,7 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
     while (wybor != 0)
     {
         auto zalogowanyPracownik = dynamic_pointer_cast<PracownikObslugi>(zalogowanaOsoba);
+        auto zalogowanyKlient = dynamic_pointer_cast<Klient>(zalogowanaOsoba);
 
         cout << "\n================ MENU SYSTEMU REZERWACJI ================\n";
         if (zalogowanaOsoba)
@@ -112,7 +113,7 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
         }
         cout << "2. Wyswietl dostepne pojazdy\n";
         cout << "3. Wyszukaj pojazd po marce\n";
-        if (!zalogowanyPracownik)
+        if (zalogowanyKlient)
         {
             cout << "4. Wypozycz pojazd i poznaj koszt\n";
             cout << "5. Oplac rezerwacje\n";
@@ -175,20 +176,24 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
         }
         case 4:
         {
-            auto klient = dynamic_pointer_cast<Klient>(zalogowanaOsoba);
-            if (!klient)
+            if (!zalogowanyKlient)
             {
-                cout << "[System] Musisz byc zalogowany jako Klient, aby wypozyczyc pojazd.\n";
+                cout << "Nieznana opcja.\n";
                 break;
             }
             int idPojazdu = wczytajInt("Podaj ID pojazdu do wypozyczenia: ");
             Date dataStart = wczytajDate("Data rozpoczecia rezerwacji:");
             Date terminZwrotu = wczytajDate("Planowany termin zwrotu:");
-            system.wypozycz(klient->getId(), idPojazdu, dataStart, terminZwrotu);
+            system.wypozycz(zalogowanyKlient->getId(), idPojazdu, dataStart, terminZwrotu);
             break;
         }
         case 5:
         {
+            if (!zalogowanyKlient)
+            {
+                cout << "Nieznana opcja.\n";
+                break;
+            }
             int idRez = wczytajInt("Podaj ID rezerwacji do oplacenia: ");
             int metoda = wczytajInt("Wybierz metode platnosci (1-Karta, 2-BLIK, 3-Gotowka): ");
             SposobPlatnosci sposob = SposobPlatnosci::KARTA;
@@ -208,13 +213,12 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
         }
         case 6:
         {
-            auto klient = dynamic_pointer_cast<Klient>(zalogowanaOsoba);
-            if (!klient)
+            if (!zalogowanyKlient)
             {
-                cout << "[System] Musisz byc zalogowany jako Klient, aby sprawdzic historie.\n";
+                cout << "Nieznana opcja.\n";
                 break;
             }
-            klient->sprawdzHistorieRezerwacji();
+            zalogowanyKlient->sprawdzHistorieRezerwacji();
             break;
         }
         case 7:
