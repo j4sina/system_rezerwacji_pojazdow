@@ -1,6 +1,14 @@
 #include "../include/Platnosc.h"
 #include <iostream>
 
+Platnosc::Platnosc()
+    : id_platnosci_(0),
+      sposob_platnosci_(SposobPlatnosci::KARTA),
+      termin_platnosci_(""),
+      cena_(0.0)
+{
+}
+
 Platnosc::Platnosc(int id_platnosci, SposobPlatnosci sposob_platnosci, string termin_platnosci, double cena)
     : id_platnosci_(id_platnosci),
       sposob_platnosci_(sposob_platnosci),

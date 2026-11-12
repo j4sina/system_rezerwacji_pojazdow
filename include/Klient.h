@@ -2,7 +2,7 @@
 #include <memory>
 #include <string>
 #include <iostream>
-#include "osoba.h"
+#include "Osoba.h"
 #include <vector>
 #include "Pojazd.h"
 #include "Rezerwacja.h"
@@ -18,6 +18,7 @@ public:
 
     void wyszukajPojazd(const std::vector<std::shared_ptr<Pojazd>> &katalog, const std::string &szukanaMarka, const std::string &szukanyModel) const;
     void dodajDoHistorii(const Rezerwacja &rezerwacja);
+    void zaktualizujRezerwacje(const Rezerwacja &rezerwacja);
     void sprawdzHistorieRezerwacji() const;
 
 private:

@@ -14,8 +14,8 @@ enum class SposobPlatnosci
 class Platnosc
 {
 public:
+    Platnosc();
     Platnosc(int id_platnosci, SposobPlatnosci sposob_platnosci, string termin_platnosci, double cena);
-    Platnosc() = default;
     void zarejestrujPlatnosc();
 
     int getIdPlatnosci() const;

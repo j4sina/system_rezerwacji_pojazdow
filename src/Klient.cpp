@@ -41,6 +41,18 @@ void Klient::dodajDoHistorii(const Rezerwacja &rezerwacja)
     historia_rezerwacji_.push_back(rezerwacja);
 }
 
+void Klient::zaktualizujRezerwacje(const Rezerwacja &rezerwacja)
+{
+    for (auto &rez : historia_rezerwacji_)
+    {
+        if (rez.getIdRezerwacji() == rezerwacja.getIdRezerwacji())
+        {
+            rez = rezerwacja;
+            return;
+        }
+    }
+}
+
 void Klient::sprawdzHistorieRezerwacji() const
 {
     std::cout << "\n--- Historia rezerwacji klienta ---\n";
