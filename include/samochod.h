@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pojazd.h"
+#include "Pojazd.h"
 
 class Samochod : public Pojazd
 {

@@ -1,4 +1,4 @@
-#include "../include/motocykl.h"
+#include "../include/Motocykl.h"
 
 Motocykl::Motocykl(int id_pojazdu,
                    const std::string &marka,

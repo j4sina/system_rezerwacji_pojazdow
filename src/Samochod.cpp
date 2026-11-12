@@ -1,4 +1,4 @@
-#include "../include/samochod.h"
+#include "../include/Samochod.h"
 
 Samochod::Samochod(int id_pojazdu,
                    const std::string &marka,
