@@ -111,7 +111,7 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
             cout << "1. Zaloguj sie na konto\n";
         }
         cout << "2. Wyswietl dostepne pojazdy\n";
-        cout << "3. Wyszukaj pojazd po marce i modelu\n";
+        cout << "3. Wyszukaj pojazd po marce\n";
         if (!zalogowanyPracownik)
         {
             cout << "4. Wypozycz pojazd i poznaj koszt\n";
@@ -160,11 +160,8 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
         case 3:
         {
             string marka;
-            string model;
             cout << "Podaj marke: ";
             cin >> marka;
-            cout << "Podaj model: ";
-            cin >> model;
             auto klient = dynamic_pointer_cast<Klient>(zalogowanaOsoba);
             if (!klient)
             {
@@ -172,7 +169,7 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
             }
             if (klient)
             {
-                klient->wyszukajPojazd(system.getFlota(), marka, model);
+                klient->wyszukajPojazd(system.getFlota(), marka);
             }
             break;
         }

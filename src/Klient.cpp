@@ -12,19 +12,20 @@ bool Klient::sprawdzUprawnienia() const
     return true;
 }
 
-void Klient::wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka, const string &szukanyModel) const
+void Klient::wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka) const
 {
-    cout << "Wyniki wyszukiwania dla: " << szukanaMarka << " " << szukanyModel << ":\n";
+    cout << "Wyniki wyszukiwania dla marki: " << szukanaMarka << ":\n";
     bool znaleziono = false;
 
     for (const auto &pojazd : katalog)
     {
-        if (pojazd->getMarka() == szukanaMarka && pojazd->getModel() == szukanyModel)
+        if (pojazd->getMarka() == szukanaMarka)
         {
             if (pojazd->getDostepnosc())
             {
-                cout << "- Pojazd ID: " << pojazd->getIdPojazdu() << " jest DOSTEPNY (Cena: "
-                     << pojazd->getCenaZaDzien() << " PLN/dzien)\n";
+                cout << "- Pojazd ID: " << pojazd->getIdPojazdu()
+                     << " (" << pojazd->getMarka() << " " << pojazd->getModel() << ")"
+                     << " jest DOSTEPNY (Cena: " << pojazd->getCenaZaDzien() << " PLN/dzien)\n";
                 znaleziono = true;
             }
         }

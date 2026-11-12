@@ -16,7 +16,7 @@ public:
 
     bool sprawdzUprawnienia() const override;
 
-    void wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka, const string &szukanyModel) const;
+    void wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka) const;
     void dodajDoHistorii(const Rezerwacja &rezerwacja);
     void zaktualizujRezerwacje(const Rezerwacja &rezerwacja);
     void sprawdzHistorieRezerwacji() const;
