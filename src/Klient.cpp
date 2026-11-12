@@ -6,7 +6,7 @@ Klient::Klient(int id, string imie, string nazwisko)
 {
 }
 
-bool Klient::sprawdzaUprawnienia() const
+bool Klient::sprawdzUprawnienia() const
 {
     cout << "Uprawnienia Klienta zweryfikowane (dostep do rezerwacji)." << endl;
     return true;

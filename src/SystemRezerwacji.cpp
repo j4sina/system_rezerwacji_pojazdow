@@ -109,7 +109,7 @@ bool SystemRezerwacji::wypozycz(int idKlienta, int idPojazdu, const Date &dataRe
         return false;
     }
 
-    if (!klient->sprawdzaUprawnienia())
+    if (!klient->sprawdzUprawnienia())
     {
         cout << "[System] Klient nie posiada uprawnien do rezerwacji.\n";
         return false;
@@ -181,7 +181,7 @@ bool SystemRezerwacji::pracownikDodajPojazd(int idPracownika, shared_ptr<Pojazd>
         return false;
     }
 
-    if (!pracownik->sprawdzaUprawnienia())
+    if (!pracownik->sprawdzUprawnienia())
     {
         cout << "[System] Blad: Brak uprawnien pracownika do zarzadzania flota.\n";
         return false;
@@ -218,7 +218,7 @@ bool SystemRezerwacji::pracownikUsunPojazd(int idPracownika, int idPojazdu)
         return false;
     }
 
-    if (!pracownik->sprawdzaUprawnienia())
+    if (!pracownik->sprawdzUprawnienia())
     {
         cout << "[System] Blad: Brak uprawnien pracownika do zarzadzania flota.\n";
         return false;
@@ -319,7 +319,7 @@ bool SystemRezerwacji::przyjmijZwrot(int idPracownika, int idRezerwacji, const D
         return false;
     }
 
-    if (!pracownik->sprawdzaUprawnienia())
+    if (!pracownik->sprawdzUprawnienia())
     {
         cout << "[System] Blad: Brak uprawnien pracownika.\n";
         return false;

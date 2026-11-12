@@ -15,7 +15,7 @@ public:
                      const string &id_pracownika, const Date &data_zatrudnienia,
                      float pensja);
 
-    bool sprawdzaUprawnienia() const override;
+    bool sprawdzUprawnienia() const override;
 
     string getIdPracownika() const;
     Date getDataZatrudnienia() const;

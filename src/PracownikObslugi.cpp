@@ -12,7 +12,7 @@ PracownikObslugi::PracownikObslugi(int id, const string &imie, const string &naz
 {
 }
 
-bool PracownikObslugi::sprawdzaUprawnienia() const
+bool PracownikObslugi::sprawdzUprawnienia() const
 {
     // Pracownik obslugi posiada uprawnienia do zarzadzania flota
     return true;

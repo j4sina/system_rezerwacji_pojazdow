@@ -9,7 +9,7 @@ public:
     Osoba(int id, const string imie, const string nazwisko, const string login, const string haslo);
     virtual ~Osoba() = default;
 
-    virtual bool sprawdzaUprawnienia() const = 0;
+    virtual bool sprawdzUprawnienia() const = 0;
 
     bool zaloguj(const string login, const string haslo);
     void wyloguj();

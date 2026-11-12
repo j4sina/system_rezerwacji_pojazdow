@@ -14,7 +14,7 @@ class Klient : public Osoba
 public:
     Klient(int id, string imie, string nazwisko);
 
-    bool sprawdzaUprawnienia() const override;
+    bool sprawdzUprawnienia() const override;
 
     void wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka, const string &szukanyModel) const;
     void dodajDoHistorii(const Rezerwacja &rezerwacja);
