@@ -1,6 +1,8 @@
 #include "../include/Rezerwacja.h"
 #include <iostream>
 
+using namespace std;
+
 Rezerwacja::Rezerwacja(int id_rezerwacji, const Date &data_rezerwacji,
                        const Date &termin_zwrotu, int ilosc_dni)
     : data_rezerwacji_(data_rezerwacji),
@@ -89,7 +91,7 @@ float Rezerwacja::getKara() const
     return kara_;
 }
 
-const std::vector<PozycjaRezerwacji> &Rezerwacja::getPozycje() const
+const vector<PozycjaRezerwacji> &Rezerwacja::getPozycje() const
 {
     return pozycje_;
 }

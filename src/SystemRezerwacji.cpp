@@ -1,35 +1,37 @@
 #include "../include/SystemRezerwacji.h"
 #include <iostream>
 
+using namespace std;
+
 SystemRezerwacji::SystemRezerwacji()
     : nastepne_id_rezerwacji_(1),
       nastepne_id_platnosci_(1)
 {
 }
 
-void SystemRezerwacji::dodajKlienta(std::shared_ptr<Klient> klient)
+void SystemRezerwacji::dodajKlienta(shared_ptr<Klient> klient)
 {
     klienci_.push_back(klient);
 }
 
-void SystemRezerwacji::dodajPracownika(std::shared_ptr<PracownikObslugi> pracownik)
+void SystemRezerwacji::dodajPracownika(shared_ptr<PracownikObslugi> pracownik)
 {
     pracownicy_.push_back(pracownik);
 }
 
-void SystemRezerwacji::dodajPojazd(std::shared_ptr<Pojazd> pojazd)
+void SystemRezerwacji::dodajPojazd(shared_ptr<Pojazd> pojazd)
 {
     flota_.push_back(pojazd);
 }
 
-std::shared_ptr<Osoba> SystemRezerwacji::zalogujUzytkownika(const std::string &login, const std::string &haslo)
+shared_ptr<Osoba> SystemRezerwacji::zalogujUzytkownika(const string &login, const string &haslo)
 {
     for (const auto &klient : klienci_)
     {
         if (klient->zaloguj(login, haslo))
         {
-            std::cout << "[System] Zalogowano klienta: " << klient->getImie()
-                      << " " << klient->getNazwisko() << " (ID: " << klient->getId() << ").\n";
+            cout << "[System] Zalogowano klienta: " << klient->getImie()
+                 << " " << klient->getNazwisko() << " (ID: " << klient->getId() << ").\n";
             return klient;
         }
     }
@@ -38,17 +40,17 @@ std::shared_ptr<Osoba> SystemRezerwacji::zalogujUzytkownika(const std::string &l
     {
         if (pracownik->zaloguj(login, haslo))
         {
-            std::cout << "[System] Zalogowano pracownika: " << pracownik->getImie()
-                      << " " << pracownik->getNazwisko() << " (ID: " << pracownik->getId() << ").\n";
+            cout << "[System] Zalogowano pracownika: " << pracownik->getImie()
+                 << " " << pracownik->getNazwisko() << " (ID: " << pracownik->getId() << ").\n";
             return pracownik;
         }
     }
 
-    std::cout << "[System] Blad logowania: Niepoprawny login lub haslo.\n";
+    cout << "[System] Blad logowania: Niepoprawny login lub haslo.\n";
     return nullptr;
 }
 
-std::shared_ptr<Pojazd> SystemRezerwacji::znajdzPojazd(int idPojazdu) const
+shared_ptr<Pojazd> SystemRezerwacji::znajdzPojazd(int idPojazdu) const
 {
     for (const auto &p : flota_)
     {
@@ -60,7 +62,7 @@ std::shared_ptr<Pojazd> SystemRezerwacji::znajdzPojazd(int idPojazdu) const
     return nullptr;
 }
 
-std::shared_ptr<Klient> SystemRezerwacji::znajdzKlienta(int idKlienta) const
+shared_ptr<Klient> SystemRezerwacji::znajdzKlienta(int idKlienta) const
 {
     for (const auto &k : klienci_)
     {
@@ -72,7 +74,7 @@ std::shared_ptr<Klient> SystemRezerwacji::znajdzKlienta(int idKlienta) const
     return nullptr;
 }
 
-std::shared_ptr<PracownikObslugi> SystemRezerwacji::znajdzPracownika(int idPracownika) const
+shared_ptr<PracownikObslugi> SystemRezerwacji::znajdzPracownika(int idPracownika) const
 {
     for (const auto &pr : pracownicy_)
     {
@@ -91,25 +93,25 @@ bool SystemRezerwacji::wypozycz(int idKlienta, int idPojazdu, const Date &dataRe
 
     if (!pojazd || !klient)
     {
-        std::cout << "[System] Blad: Niepoprawne ID klienta lub pojazdu.\n";
+        cout << "[System] Blad: Niepoprawne ID klienta lub pojazdu.\n";
         return false;
     }
 
     if (!klient->czyZalogowany())
     {
-        std::cout << "[System] Blad: Klient musi byc zalogowany, aby dokonac rezerwacji.\n";
+        cout << "[System] Blad: Klient musi byc zalogowany, aby dokonac rezerwacji.\n";
         return false;
     }
 
     if (!pojazd->getDostepnosc())
     {
-        std::cout << "[System] Pojazd jest aktualnie NIEDOSTEPNY.\n";
+        cout << "[System] Pojazd jest aktualnie NIEDOSTEPNY.\n";
         return false;
     }
 
     if (!klient->sprawdzaUprawnienia())
     {
-        std::cout << "[System] Klient nie posiada uprawnien do rezerwacji.\n";
+        cout << "[System] Klient nie posiada uprawnien do rezerwacji.\n";
         return false;
     }
 
@@ -134,14 +136,14 @@ bool SystemRezerwacji::wypozycz(int idKlienta, int idPojazdu, const Date &dataRe
     klient->dodajDoHistorii(rezerwacja);
     rezerwacje_.push_back(rezerwacja);
 
-    std::cout << "[System] Rezerwacja zakonczona sukcesem! ID Rezerwacji: "
-              << rezerwacja.getIdRezerwacji()
-              << " | Laczny koszt (z kaucja): " << koszt << " PLN\n";
+    cout << "[System] Rezerwacja zakonczona sukcesem! ID Rezerwacji: "
+         << rezerwacja.getIdRezerwacji()
+         << " | Laczny koszt (z kaucja): " << koszt << " PLN\n";
 
     return true;
 }
 
-bool SystemRezerwacji::oplacRezerwacje(int idRezerwacji, SposobPlatnosci sposob, const std::string &terminPlatnosci)
+bool SystemRezerwacji::oplacRezerwacje(int idRezerwacji, SposobPlatnosci sposob, const string &terminPlatnosci)
 {
     for (auto &rez : rezerwacje_)
     {
@@ -160,40 +162,40 @@ bool SystemRezerwacji::oplacRezerwacje(int idRezerwacji, SposobPlatnosci sposob,
         }
     }
 
-    std::cout << "[System] Blad: Nie znaleziono rezerwacji o ID: " << idRezerwacji << ".\n";
+    cout << "[System] Blad: Nie znaleziono rezerwacji o ID: " << idRezerwacji << ".\n";
     return false;
 }
 
-bool SystemRezerwacji::pracownikDodajPojazd(int idPracownika, std::shared_ptr<Pojazd> nowyPojazd)
+bool SystemRezerwacji::pracownikDodajPojazd(int idPracownika, shared_ptr<Pojazd> nowyPojazd)
 {
     auto pracownik = znajdzPracownika(idPracownika);
     if (!pracownik)
     {
-        std::cout << "[System] Blad: Nie znaleziono pracownika o ID " << idPracownika << ".\n";
+        cout << "[System] Blad: Nie znaleziono pracownika o ID " << idPracownika << ".\n";
         return false;
     }
 
     if (!pracownik->czyZalogowany())
     {
-        std::cout << "[System] Blad: Pracownik musi byc zalogowany, aby dodac pojazd.\n";
+        cout << "[System] Blad: Pracownik musi byc zalogowany, aby dodac pojazd.\n";
         return false;
     }
 
     if (!pracownik->sprawdzaUprawnienia())
     {
-        std::cout << "[System] Blad: Brak uprawnien pracownika do zarzadzania flota.\n";
+        cout << "[System] Blad: Brak uprawnien pracownika do zarzadzania flota.\n";
         return false;
     }
 
     if (!nowyPojazd)
     {
-        std::cout << "[System] Blad: Przekazano pusty obiekt pojazdu.\n";
+        cout << "[System] Blad: Przekazano pusty obiekt pojazdu.\n";
         return false;
     }
 
     if (znajdzPojazd(nowyPojazd->getIdPojazdu()) != nullptr)
     {
-        std::cout << "[System] Blad: Pojazd o ID " << nowyPojazd->getIdPojazdu() << " juz istnieje we flocie.\n";
+        cout << "[System] Blad: Pojazd o ID " << nowyPojazd->getIdPojazdu() << " juz istnieje we flocie.\n";
         return false;
     }
 
@@ -206,25 +208,25 @@ bool SystemRezerwacji::pracownikUsunPojazd(int idPracownika, int idPojazdu)
     auto pracownik = znajdzPracownika(idPracownika);
     if (!pracownik)
     {
-        std::cout << "[System] Blad: Nie znaleziono pracownika o ID " << idPracownika << ".\n";
+        cout << "[System] Blad: Nie znaleziono pracownika o ID " << idPracownika << ".\n";
         return false;
     }
 
     if (!pracownik->czyZalogowany())
     {
-        std::cout << "[System] Blad: Pracownik musi byc zalogowany, aby usunac pojazd.\n";
+        cout << "[System] Blad: Pracownik musi byc zalogowany, aby usunac pojazd.\n";
         return false;
     }
 
     if (!pracownik->sprawdzaUprawnienia())
     {
-        std::cout << "[System] Blad: Brak uprawnien pracownika do zarzadzania flota.\n";
+        cout << "[System] Blad: Brak uprawnien pracownika do zarzadzania flota.\n";
         return false;
     }
 
     if (znajdzPojazd(idPojazdu) == nullptr)
     {
-        std::cout << "[System] Blad: Nie znaleziono we flocie pojazdu o ID " << idPojazdu << ".\n";
+        cout << "[System] Blad: Nie znaleziono we flocie pojazdu o ID " << idPojazdu << ".\n";
         return false;
     }
 
@@ -232,9 +234,9 @@ bool SystemRezerwacji::pracownikUsunPojazd(int idPracownika, int idPojazdu)
     return true;
 }
 
-std::vector<std::shared_ptr<Pojazd>> SystemRezerwacji::wyszukajDostepnePojazdy() const
+vector<shared_ptr<Pojazd>> SystemRezerwacji::wyszukajDostepnePojazdy() const
 {
-    std::vector<std::shared_ptr<Pojazd>> dostepne;
+    vector<shared_ptr<Pojazd>> dostepne;
     for (const auto &p : flota_)
     {
         if (p->getDostepnosc())
@@ -248,20 +250,20 @@ std::vector<std::shared_ptr<Pojazd>> SystemRezerwacji::wyszukajDostepnePojazdy()
 void SystemRezerwacji::wyswietlDostepnePojazdy() const
 {
     auto dostepne = wyszukajDostepnePojazdy();
-    std::cout << "\n--- Dostepne pojazdy we flocie ---\n";
+    cout << "\n--- Dostepne pojazdy we flocie ---\n";
     if (dostepne.empty())
     {
-        std::cout << "Brak dostepnych pojazdow.\n";
+        cout << "Brak dostepnych pojazdow.\n";
         return;
     }
 
     for (const auto &p : dostepne)
     {
-        std::cout << "- ID: " << p->getIdPojazdu()
-                  << " | " << p->getMarka() << " " << p->getModel()
-                  << " | Nr rej.: " << p->getNrRejestracyjny()
-                  << " | Cena/dzien: " << p->getCenaZaDzien() << " PLN"
-                  << " | Kaucja: " << p->getKaucja() << " PLN\n";
+        cout << "- ID: " << p->getIdPojazdu()
+             << " | " << p->getMarka() << " " << p->getModel()
+             << " | Nr rej.: " << p->getNrRejestracyjny()
+             << " | Cena/dzien: " << p->getCenaZaDzien() << " PLN"
+             << " | Kaucja: " << p->getKaucja() << " PLN\n";
     }
 }
 
@@ -273,7 +275,7 @@ bool SystemRezerwacji::przyjmijZwrot(int idRezerwacji, const Date &faktycznaData
         {
             if (rez.isZwrocono())
             {
-                std::cout << "[System] Rezerwacja ID: " << idRezerwacji << " zostala juz zwrocona.\n";
+                cout << "[System] Rezerwacja ID: " << idRezerwacji << " zostala juz zwrocona.\n";
                 return false;
             }
 
@@ -292,13 +294,13 @@ bool SystemRezerwacji::przyjmijZwrot(int idRezerwacji, const Date &faktycznaData
                 k->zaktualizujRezerwacje(rez);
             }
 
-            std::cout << "[System] Przyjeto zwrot dla rezerwacji ID: " << idRezerwacji
-                      << " | Naliczona kara: " << kara << " PLN\n";
+            cout << "[System] Przyjeto zwrot dla rezerwacji ID: " << idRezerwacji
+                 << " | Naliczona kara: " << kara << " PLN\n";
             return true;
         }
     }
 
-    std::cout << "[System] Blad: Nie znaleziono rezerwacji o ID: " << idRezerwacji << ".\n";
+    cout << "[System] Blad: Nie znaleziono rezerwacji o ID: " << idRezerwacji << ".\n";
     return false;
 }
 
@@ -307,31 +309,31 @@ bool SystemRezerwacji::przyjmijZwrot(int idPracownika, int idRezerwacji, const D
     auto pracownik = znajdzPracownika(idPracownika);
     if (!pracownik)
     {
-        std::cout << "[System] Blad: Nie znaleziono pracownika o ID " << idPracownika << ".\n";
+        cout << "[System] Blad: Nie znaleziono pracownika o ID " << idPracownika << ".\n";
         return false;
     }
 
     if (!pracownik->czyZalogowany())
     {
-        std::cout << "[System] Blad: Pracownik musi byc zalogowany, aby przyjac zwrot.\n";
+        cout << "[System] Blad: Pracownik musi byc zalogowany, aby przyjac zwrot.\n";
         return false;
     }
 
     if (!pracownik->sprawdzaUprawnienia())
     {
-        std::cout << "[System] Blad: Brak uprawnien pracownika.\n";
+        cout << "[System] Blad: Brak uprawnien pracownika.\n";
         return false;
     }
 
     return przyjmijZwrot(idRezerwacji, faktycznaDataZwrotu);
 }
 
-const std::vector<std::shared_ptr<Pojazd>> &SystemRezerwacji::getFlota() const
+const vector<shared_ptr<Pojazd>> &SystemRezerwacji::getFlota() const
 {
     return flota_;
 }
 
-const std::vector<Rezerwacja> &SystemRezerwacji::getRezerwacje() const
+const vector<Rezerwacja> &SystemRezerwacji::getRezerwacje() const
 {
     return rezerwacje_;
 }

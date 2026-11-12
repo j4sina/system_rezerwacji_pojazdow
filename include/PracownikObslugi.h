@@ -21,8 +21,8 @@ public:
     Date getDataZatrudnienia() const;
     float getPensja() const;
 
-    void dodajPojazd(std::vector<std::shared_ptr<Pojazd>> &flota, std::shared_ptr<Pojazd> nowyPojazd);
-    void usunPojazd(std::vector<std::shared_ptr<Pojazd>> &flota, int idPojazdu);
+    void dodajPojazd(vector<shared_ptr<Pojazd>> &flota, shared_ptr<Pojazd> nowyPojazd);
+    void usunPojazd(vector<shared_ptr<Pojazd>> &flota, int idPojazdu);
 
 private:
     string id_pracownika_;

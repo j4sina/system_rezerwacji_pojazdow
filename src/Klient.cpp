@@ -12,7 +12,7 @@ bool Klient::sprawdzaUprawnienia() const
     return true;
 }
 
-void Klient::wyszukajPojazd(const std::vector<std::shared_ptr<Pojazd>> &katalog, const string &szukanaMarka, const string &szukanyModel) const
+void Klient::wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka, const string &szukanyModel) const
 {
     cout << "Wyniki wyszukiwania dla: " << szukanaMarka << " " << szukanyModel << ":\n";
     bool znaleziono = false;
@@ -55,19 +55,19 @@ void Klient::zaktualizujRezerwacje(const Rezerwacja &rezerwacja)
 
 void Klient::sprawdzHistorieRezerwacji() const
 {
-    std::cout << "\n--- Historia rezerwacji klienta ---\n";
+    cout << "\n--- Historia rezerwacji klienta ---\n";
     if (historia_rezerwacji_.empty())
     {
-        std::cout << "Brak przypisanych rezerwacji.\n";
+        cout << "Brak przypisanych rezerwacji.\n";
         return;
     }
 
     // Wypisywanie kazdej rezerwacji nalezacej do klienta
     for (const auto &rez : historia_rezerwacji_)
     {
-        std::cout << "- Rezerwacja ID: " << rez.getIdRezerwacji()
-                  << " | Kwota: " << rez.obliczKoszt() << " PLN"
-                  << " | Zwrocono: " << (rez.isZwrocono() ? "TAK" : "NIE")
-                  << " | Kara: " << rez.getKara() << " PLN\n";
+        cout << "- Rezerwacja ID: " << rez.getIdRezerwacji()
+             << " | Kwota: " << rez.obliczKoszt() << " PLN"
+             << " | Zwrocono: " << (rez.isZwrocono() ? "TAK" : "NIE")
+             << " | Kara: " << rez.getKara() << " PLN\n";
     }
 }

@@ -33,28 +33,28 @@ float PracownikObslugi::getPensja() const
     return pensja_;
 }
 
-void PracownikObslugi::dodajPojazd(std::vector<std::shared_ptr<Pojazd>> &flota, std::shared_ptr<Pojazd> nowyPojazd)
+void PracownikObslugi::dodajPojazd(vector<shared_ptr<Pojazd>> &flota, shared_ptr<Pojazd> nowyPojazd)
 {
     flota.push_back(nowyPojazd);
-    std::cout << "Pracownik dodal do floty pojazd: " << nowyPojazd->getMarka()
-              << " " << nowyPojazd->getModel() << " (ID: " << nowyPojazd->getIdPojazdu() << ").\n";
+    cout << "Pracownik dodal do floty pojazd: " << nowyPojazd->getMarka()
+         << " " << nowyPojazd->getModel() << " (ID: " << nowyPojazd->getIdPojazdu() << ").\n";
 }
 
-void PracownikObslugi::usunPojazd(std::vector<std::shared_ptr<Pojazd>> &flota, int idPojazdu)
+void PracownikObslugi::usunPojazd(vector<shared_ptr<Pojazd>> &flota, int idPojazdu)
 {
-    auto it = std::remove_if(flota.begin(), flota.end(),
-                             [idPojazdu](const std::shared_ptr<Pojazd> &p)
-                             {
-                                 return p->getIdPojazdu() == idPojazdu;
-                             });
+    auto it = remove_if(flota.begin(), flota.end(),
+                        [idPojazdu](const shared_ptr<Pojazd> &p)
+                        {
+                            return p->getIdPojazdu() == idPojazdu;
+                        });
 
     if (it != flota.end())
     {
         flota.erase(it, flota.end());
-        std::cout << "Pracownik pomyslnie usunal pojazd o ID: " << idPojazdu << " z systemu.\n";
+        cout << "Pracownik pomyslnie usunal pojazd o ID: " << idPojazdu << " z systemu.\n";
     }
     else
     {
-        std::cout << "Blad: Nie znaleziono we flocie pojazdu o ID " << idPojazdu << ".\n";
+        cout << "Blad: Nie znaleziono we flocie pojazdu o ID " << idPojazdu << ".\n";
     }
 }

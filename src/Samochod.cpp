@@ -1,9 +1,11 @@
 #include "../include/Samochod.h"
 
+using namespace std;
+
 Samochod::Samochod(int id_pojazdu,
-                   const std::string &marka,
-                   const std::string &model,
-                   const std::string &nr_rejestracyjny,
+                   const string &marka,
+                   const string &model,
+                   const string &nr_rejestracyjny,
                    double cena_za_dzien,
                    double kaucja)
     : Pojazd(id_pojazdu, marka, model, nr_rejestracyjny, cena_za_dzien, kaucja)

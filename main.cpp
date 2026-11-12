@@ -128,7 +128,7 @@ void uruchomMenuInteraktywne(SystemRezerwacji &system)
         {
             cout << "10. Wyloguj sie\n";
         }
-        std::cout << "0. Wyjscie\n";
+        cout << "0. Wyjscie\n";
 
         wybor = wczytajInt("Wybierz opcje: ");
 

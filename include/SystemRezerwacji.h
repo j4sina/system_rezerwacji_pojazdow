@@ -9,42 +9,44 @@
 #include "Rezerwacja.h"
 #include "Date.h"
 
+using namespace std;
+
 class SystemRezerwacji
 {
 public:
     SystemRezerwacji();
 
-    void dodajKlienta(std::shared_ptr<Klient> klient);
-    void dodajPracownika(std::shared_ptr<PracownikObslugi> pracownik);
-    void dodajPojazd(std::shared_ptr<Pojazd> pojazd);
+    void dodajKlienta(shared_ptr<Klient> klient);
+    void dodajPracownika(shared_ptr<PracownikObslugi> pracownik);
+    void dodajPojazd(shared_ptr<Pojazd> pojazd);
 
-    std::shared_ptr<Osoba> zalogujUzytkownika(const std::string &login, const std::string &haslo);
+    shared_ptr<Osoba> zalogujUzytkownika(const string &login, const string &haslo);
 
-    bool pracownikDodajPojazd(int idPracownika, std::shared_ptr<Pojazd> nowyPojazd);
+    bool pracownikDodajPojazd(int idPracownika, shared_ptr<Pojazd> nowyPojazd);
     bool pracownikUsunPojazd(int idPracownika, int idPojazdu);
 
-    std::vector<std::shared_ptr<Pojazd>> wyszukajDostepnePojazdy() const;
+    vector<shared_ptr<Pojazd>> wyszukajDostepnePojazdy() const;
     void wyswietlDostepnePojazdy() const;
 
     bool wypozycz(int idKlienta, int idPojazdu, const Date &dataRezerwacji, const Date &terminZwrotu);
-    bool oplacRezerwacje(int idRezerwacji, SposobPlatnosci sposob, const std::string &terminPlatnosci);
+    bool oplacRezerwacje(int idRezerwacji, SposobPlatnosci sposob, const string &terminPlatnosci);
 
     bool przyjmijZwrot(int idRezerwacji, const Date &faktycznaDataZwrotu);
     bool przyjmijZwrot(int idPracownika, int idRezerwacji, const Date &faktycznaDataZwrotu);
 
-    std::shared_ptr<Pojazd> znajdzPojazd(int idPojazdu) const;
-    std::shared_ptr<Klient> znajdzKlienta(int idKlienta) const;
-    std::shared_ptr<PracownikObslugi> znajdzPracownika(int idPracownika) const;
+    shared_ptr<Pojazd> znajdzPojazd(int idPojazdu) const;
+    shared_ptr<Klient> znajdzKlienta(int idKlienta) const;
+    shared_ptr<PracownikObslugi> znajdzPracownika(int idPracownika) const;
 
-    const std::vector<std::shared_ptr<Pojazd>> &getFlota() const;
-    const std::vector<Rezerwacja> &getRezerwacje() const;
+    const vector<shared_ptr<Pojazd>> &getFlota() const;
+    const vector<Rezerwacja> &getRezerwacje() const;
     int getOstatnieIdRezerwacji() const;
 
 private:
-    std::vector<std::shared_ptr<Pojazd>> flota_;
-    std::vector<std::shared_ptr<Klient>> klienci_;
-    std::vector<std::shared_ptr<PracownikObslugi>> pracownicy_;
-    std::vector<Rezerwacja> rezerwacje_;
+    vector<shared_ptr<Pojazd>> flota_;
+    vector<shared_ptr<Klient>> klienci_;
+    vector<shared_ptr<PracownikObslugi>> pracownicy_;
+    vector<Rezerwacja> rezerwacje_;
     int nastepne_id_rezerwacji_;
     int nastepne_id_platnosci_;
 };

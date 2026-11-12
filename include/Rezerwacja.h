@@ -5,6 +5,8 @@
 #include "PozycjaRezerwacji.h"
 #include "Platnosc.h"
 
+using namespace std;
+
 class Rezerwacja
 {
 public:
@@ -22,14 +24,14 @@ public:
     void setZwrocono(bool zwrocono);
     Date getTerminZwrotu() const;
     float getKara() const;
-    const std::vector<PozycjaRezerwacji> &getPozycje() const;
+    const vector<PozycjaRezerwacji> &getPozycje() const;
     void setPlatnosc(const Platnosc &platnosc);
 
 private:
     Date data_rezerwacji_;
     Date data_zwrotu_;
     int ilosc_dni_;
-    std::vector<PozycjaRezerwacji> pozycje_;
+    vector<PozycjaRezerwacji> pozycje_;
     int id_rezerwacji_;
     bool potwierdzono_;
     bool zwrocono_;

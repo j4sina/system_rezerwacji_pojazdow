@@ -2,13 +2,15 @@
 
 #include <string>
 
+using namespace std;
+
 class Pojazd
 {
 public:
     Pojazd(int id_pojazdu,
-           const std::string &marka,
-           const std::string &model,
-           const std::string &nr_rejestracyjny,
+           const string &marka,
+           const string &model,
+           const string &nr_rejestracyjny,
            double cena_za_dzien,
            double kaucja);
 
@@ -21,15 +23,15 @@ public:
     double getKaucja() const;
     bool getDostepnosc() const;
     void setDostepnosc(bool dostepnosc);
-    const std::string &getMarka() const;
-    const std::string &getModel() const;
-    const std::string &getNrRejestracyjny() const;
+    const string &getMarka() const;
+    const string &getModel() const;
+    const string &getNrRejestracyjny() const;
 
 private:
     int id_pojazdu_;
-    std::string marka_;
-    std::string model_;
-    std::string nr_rejestracyjny_;
+    string marka_;
+    string model_;
+    string nr_rejestracyjny_;
     double cena_za_dzien_;
     double kaucja_;
     bool dostepnosc_;

@@ -16,11 +16,11 @@ public:
 
     bool sprawdzaUprawnienia() const override;
 
-    void wyszukajPojazd(const std::vector<std::shared_ptr<Pojazd>> &katalog, const std::string &szukanaMarka, const std::string &szukanyModel) const;
+    void wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const string &szukanaMarka, const string &szukanyModel) const;
     void dodajDoHistorii(const Rezerwacja &rezerwacja);
     void zaktualizujRezerwacje(const Rezerwacja &rezerwacja);
     void sprawdzHistorieRezerwacji() const;
 
 private:
-    std::vector<Rezerwacja> historia_rezerwacji_;
+    vector<Rezerwacja> historia_rezerwacji_;
 };

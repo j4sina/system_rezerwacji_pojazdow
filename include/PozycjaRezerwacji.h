@@ -3,13 +3,15 @@
 #include <memory>
 #include "Pojazd.h"
 
+using namespace std;
+
 class PozycjaRezerwacji
 {
 public:
-    explicit PozycjaRezerwacji(std::shared_ptr<Pojazd> pojazd);
+    explicit PozycjaRezerwacji(shared_ptr<Pojazd> pojazd);
 
-    std::shared_ptr<Pojazd> getPojazd() const;
+    shared_ptr<Pojazd> getPojazd() const;
 
 private:
-    std::shared_ptr<Pojazd> pojazd_;
+    shared_ptr<Pojazd> pojazd_;
 };

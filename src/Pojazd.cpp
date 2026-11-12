@@ -1,9 +1,11 @@
 #include "../include/Pojazd.h"
 
+using namespace std;
+
 Pojazd::Pojazd(int id_pojazdu,
-               const std::string &marka,
-               const std::string &model,
-               const std::string &nr_rejestracyjny,
+               const string &marka,
+               const string &model,
+               const string &nr_rejestracyjny,
                double cena_za_dzien,
                double kaucja)
     : id_pojazdu_(id_pojazdu),
@@ -41,17 +43,17 @@ void Pojazd::setDostepnosc(bool dostepnosc)
     dostepnosc_ = dostepnosc;
 }
 
-const std::string &Pojazd::getMarka() const
+const string &Pojazd::getMarka() const
 {
     return marka_;
 }
 
-const std::string &Pojazd::getModel() const
+const string &Pojazd::getModel() const
 {
     return model_;
 }
 
-const std::string &Pojazd::getNrRejestracyjny() const
+const string &Pojazd::getNrRejestracyjny() const
 {
     return nr_rejestracyjny_;
 }

@@ -1,6 +1,8 @@
 #include "../include/Platnosc.h"
 #include <iostream>
 
+using namespace std;
+
 Platnosc::Platnosc()
     : id_platnosci_(0),
       sposob_platnosci_(SposobPlatnosci::KARTA),
@@ -33,8 +35,8 @@ void Platnosc::zarejestrujPlatnosc()
         break;
     }
 
-    std::cout << "[Platnosc] Zarejestrowano pomyslnie platnosc ID: " << id_platnosci_
-              << " na kwote: " << cena_ << " PLN (metoda: " << nazwaMetody << ").\n";
+    cout << "[Platnosc] Zarejestrowano pomyslnie platnosc ID: " << id_platnosci_
+         << " na kwote: " << cena_ << " PLN (metoda: " << nazwaMetody << ").\n";
 }
 
 int Platnosc::getIdPlatnosci() const
