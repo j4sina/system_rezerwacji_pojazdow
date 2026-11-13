@@ -1,5 +1,18 @@
 #include "../include/Klient.h"
 #include <iostream>
+#include <algorithm>
+#include <cctype>
+
+namespace
+{
+string naMaleLitery(string s)
+{
+    transform(s.begin(), s.end(), s.begin(), [](unsigned char c) {
+        return tolower(c);
+    });
+    return s;
+}
+} // namespace
 
 Klient::Klient(int id, string imie, string nazwisko)
     : Osoba(id, imie, nazwisko)
@@ -16,10 +29,11 @@ void Klient::wyszukajPojazd(const vector<shared_ptr<Pojazd>> &katalog, const str
 {
     cout << "Wyniki wyszukiwania dla marki: " << szukanaMarka << ":\n";
     bool znaleziono = false;
+    string szukanaLower = naMaleLitery(szukanaMarka);
 
     for (const auto &pojazd : katalog)
     {
-        if (pojazd->getMarka() == szukanaMarka)
+        if (naMaleLitery(pojazd->getMarka()) == szukanaLower)
         {
             if (pojazd->getDostepnosc())
             {
